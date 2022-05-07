@@ -27,6 +27,7 @@ jobs:
 
       - name: Create Stack in Pulumi
         run: |
+          pulumi login
           pulumi stack init dev
           pulumi stack select dev --non-interactive
           pulumi preview -j
@@ -37,7 +38,7 @@ jobs:
       name: Dev
 
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Provision Infrastructure
         run: |
