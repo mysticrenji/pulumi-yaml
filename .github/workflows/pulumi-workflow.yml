@@ -35,6 +35,7 @@ jobs:
          PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
         run: |
           pulumi login
+          pulumi plugin install language yaml
           pulumi stack select dev --non-interactive
           pulumi preview -j
   provision:
