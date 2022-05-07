@@ -24,8 +24,23 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-      # Runs a set of commands using the runners shell
-      - name: Pulumi Installation
+
+      - name: Create Stack in Pulumi
         run: |
-          curl -fsSL https://get.pulumi.com | sh
+          pulumi stack init dev
+          pulumi stack select dev --non-interactive
+          pulumi preview -j
+  provision:
+    needs: build
+    name: Deploy to Dev
+    environment:
+      name: Dev
+
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Provision Infrastructure
+        run: |
+          pulumi up --non-interactive
+     
 
