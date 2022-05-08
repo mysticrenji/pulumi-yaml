@@ -43,7 +43,7 @@ jobs:
         uses: actions/upload-artifact@v1.0.0
         with:
           name: Plan
-          path: ${{ env.GITHUB_WORKSPACE }}/plan.json
+          path: plan.json
   provision:
     needs: build
     name: Deploy to Dev
