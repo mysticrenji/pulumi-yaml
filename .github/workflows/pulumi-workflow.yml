@@ -67,8 +67,6 @@ jobs:
          AWS_REGION: ${{ secrets.AWS_REGION }}
          PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
         run: |
-          ls
-          cd artifacts
           pulumi login
           pulumi plugin install language yaml
           pulumi plugin install resource aws
