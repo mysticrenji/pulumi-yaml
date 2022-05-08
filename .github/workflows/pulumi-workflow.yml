@@ -34,16 +34,18 @@ jobs:
          AWS_REGION: ${{ secrets.AWS_REGION }}
          PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
         run: |
+          mkdir artifacts
           pulumi login
           pulumi plugin install language yaml
           pulumi plugin install resource aws
           pulumi stack select dev --non-interactive
-          pulumi preview --save-plan pulumi-plan.json
+          pulumi preview --save-plan artifacts/pulumi-plan.json
+          mv pulumi.yaml artifacts/
       - name: Publish Artifacts
         uses: actions/upload-artifact@v1.0.0
         with:
           name: Plan
-          path: pulumi*
+          path: artifacts
   provision:
     needs: build
     name: Deploy to Dev
@@ -65,6 +67,8 @@ jobs:
          AWS_REGION: ${{ secrets.AWS_REGION }}
          PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
         run: |
+          ls
+          cd artifacts
           pulumi login
           pulumi plugin install language yaml
           pulumi plugin install resource aws
