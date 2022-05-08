@@ -55,6 +55,6 @@ jobs:
          AWS_REGION: ${{ secrets.AWS_REGION }}
          PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
         run: |
-          pulumi up --non-interactive
+          pulumi up --non-interactive --yes
      
 
