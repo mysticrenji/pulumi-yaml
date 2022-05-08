@@ -39,8 +39,8 @@ jobs:
           pulumi plugin install language yaml
           pulumi plugin install resource aws
           pulumi stack select dev --non-interactive
-          pulumi preview --save-plan artifacts/pulumi-plan.json
-          mv pulumi.yaml artifacts/
+          pulumi preview --save-plan ./artifacts/pulumi-plan.json
+          mv Pulumi.yaml artifacts/
       - name: Publish Artifacts
         uses: actions/upload-artifact@v1.0.0
         with:
