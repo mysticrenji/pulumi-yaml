@@ -71,6 +71,6 @@ jobs:
           pulumi plugin install language yaml
           pulumi plugin install resource aws
           pulumi stack select dev --non-interactive
-          pulumi up --plan='plan.json' --non-interactive --yes
+          pulumi up --plan='pulumi-plan.json' --non-interactive --yes
      
 
