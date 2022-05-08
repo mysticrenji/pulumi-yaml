@@ -36,6 +36,7 @@ jobs:
         run: |
           pulumi login
           pulumi plugin install language yaml
+          pulumi plugin install resource aws
           pulumi stack select dev --non-interactive
           pulumi preview -j
   provision:
