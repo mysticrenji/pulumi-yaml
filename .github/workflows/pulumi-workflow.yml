@@ -42,7 +42,7 @@ jobs:
           pulumi preview --save-plan ./artifacts/pulumi-plan.json
           mv Pulumi.yaml artifacts/
       - name: Publish Artifacts
-        uses: actions/upload-artifact@v1.0.0
+        uses: actions/upload-artifact@v4.6.2
         with:
           name: Plan
           path: artifacts
@@ -56,7 +56,7 @@ jobs:
 
     steps:
       - name: Download artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v5
         with:
           name: Plan
 
